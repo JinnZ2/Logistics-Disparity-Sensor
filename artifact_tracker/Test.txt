@@ -1,0 +1,18 @@
+pip install flask
+python app.py
+
+Then open http://localhost:500
+
+sample entry:
+
+{
+  "artifact_id": "A12E84C9",
+  "artifact_name": "Polaroid of Berenstein Bears Book",
+  "user_memory": "Berenstein Bears",
+  "current_version": "Berenstain Bears",
+  "date_range": "1987–1993",
+  "witnesses": ["Mother", "Father"],
+  "notes": "Polaroid confirms 'stein' spelling.",
+  "image_hash": "a3c1f8d29b...9271c2f",
+  "timestamp": "2025-07-19T20:35:00"
+}

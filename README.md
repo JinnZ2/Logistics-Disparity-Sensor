@@ -1,2 +1,8 @@
-# Logistics-Disparity-Sensor
-Detect memory divergence caused by unequal access. The Logistic Disparity Sensor (LDS) analyzes location, access mode, media sync, and variant evidence to classify when a “false” memory may have been regionally or economically true. Mandela Effect
+Mandela Effect
+
+Logistic Disparity Sensor (LDS)
+
+A diagnostic framework for identifying reality fragmentation caused by supply chain gaps, media desynchronization, and access inequality.
+LDS helps distinguish between memory error and legitimate regional variation—especially in cases of “Mandela Effect” or contested cultural memory.
+
+A memory isn’t wrong just because it wasn’t widely distributed.

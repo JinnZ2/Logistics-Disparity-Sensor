@@ -1,0 +1,64 @@
+---
+
+###  Basic Sketch of `memory_app.py`
+
+```python
+from flask import Flask, request, render_template, redirect
+import json
+import os
+from datetime import datetime
+
+app = Flask(__name__)
+MEMORY_DB = "db/memory_bank.json"
+
+def load_memories():
+    if not os.path.exists(MEMORY_DB):
+        return []
+    with open(MEMORY_DB, "r") as f:
+        return json.load(f)
+
+def save_memories(memories):
+    with open(MEMORY_DB, "w") as f:
+        json.dump(memories, f, indent=2)
+
+@app.route("/", methods=["GET", "POST"])
+def submit_memory():
+    if request.method == "POST":
+        memories = load_memories()
+        new_id = f"M{len(memories)+1:04d}"
+        memories.append({
+            "id": new_id,
+            "memory_text": request.form["memory_text"],
+            "date_range": request.form.get("date_range"),
+            "region": request.form.get("region"),
+            "source": request.form.get("source"),
+            "category": request.form.get("category"),
+            "confirmation_count": 0,
+            "origin_suspect": "🌀 Unknown",
+            "last_confirmed": None
+        })
+        save_memories(memories)
+        return redirect("/search")
+    return render_template("memory_submit.html")
+
+@app.route("/search", methods=["GET"])
+def search_memories():
+    query = request.args.get("query", "").lower()
+    results = []
+    for m in load_memories():
+        if query in m["memory_text"].lower() or query in (m.get("category") or "").lower():
+            results.append(m)
+    return render_template("memory_search.html", results=results)
+
+@app.route("/confirm/<mid>", methods=["POST"])
+def confirm_memory(mid):
+    memories = load_memories()
+    for m in memories:
+        if m["id"] == mid:
+            m["confirmation_count"] += 1
+            m["last_confirmed"] = datetime.now().strftime("%Y-%m-%d")
+    save_memories(memories)
+    return redirect("/search")
+
+if __name__ == "__main__":
+    app.run(debug=True)

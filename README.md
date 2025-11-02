@@ -48,3 +48,5 @@ The LDS module flags that:
 
 Conclusion: Divergent memory confirmed as **logistically valid**.
 
+
+“Your control group had access to the brand canon. Ours didn’t. Stop pathologizing the result.”

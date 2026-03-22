@@ -38,7 +38,7 @@ def collect_entry():
             "Misprint", "Branding Lag", "Mislabel", "Early Packaging", "Recalled Item", "Unknown"
         ]),
         "media_ad_match": get_input("Media Ad Match", options=[
-            "Never saw ads", "Didn’t match TV", "Matched ads", "Not applicable"
+            "Never saw ads", "Didn't match TV", "Matched ads", "Not applicable"
         ]),
         "community_confirmation": get_input("Community Confirmation", options=[
             "Confirmed", "Mixed", "Contradicted", "Unknown"

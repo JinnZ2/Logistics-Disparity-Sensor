@@ -10,43 +10,45 @@ Core thesis: many "false memories" are regionally valid experiences caused by lo
 
 ```
 Logistics-Disparity-Sensor/
-├── lds_scanner.py              # Core scoring algorithm (calculate_lds_score)
+├── lds-scanner.py              # Core scoring algorithm (calculate_lds_score)
 ├── README.md                   # Project overview
-├── Memory.md                   # Research analysis document (626 lines)
+├── memory.md                   # Research analysis document (626 lines)
 ├── LICENSE                     # MIT License
 │
-├── artifact_tracker/           # Upload & validate physical artifacts with SHA256 hashing
-│   ├── Readme.md
-│   └── Test.txt                # Setup instructions + sample JSON
+├── artifact-tracker/           # Upload & validate physical artifacts with SHA256 hashing
+│   ├── readme.md
+│   └── test.txt                # Setup instructions + sample JSON
 │
-├── drift_map/                  # Document regionally valid alternate realities
-│   ├── drift_entry_form.py     # Flask-based memory entry form
-│   ├── sample_entry.json       # Example drift memory entry
-│   ├── drift_map_index.json    # Index of known divergence clusters
+├── drift-map/                  # Document regionally valid alternate realities
+│   ├── drift-entry-form.py     # CLI-based memory entry wizard
+│   ├── sample-entry.json       # Example drift memory entry
+│   ├── drift-map-index-sample.json  # Index of known divergence clusters
 │   └── schema.md               # Data entry schema definition
 │
-├── drift_monitor/              # Archive silent edits to public sources
-│   ├── Readme.md
-│   └── sample_targets.txt      # URLs to monitor for changes
+├── drift-monitor/              # Archive silent edits to public sources
+│   ├── readme.md
+│   └── sample-targets.txt      # URLs to monitor for changes
 │
-├── field_manual_export/        # Create printable/offline memory records
-│   ├── exporter_sample.py      # Export utility
-│   ├── Readme.md
+├── field-manual-export/        # Create printable/offline memory records
+│   ├── exporter-sample.py      # Export utility
+│   ├── readme.md
 │   └── templates/
-│       └── artifact_card_templates.md  # Jinja2 card template
+│       └── artifact-card-templates.md  # Jinja2 card template
 │
-├── mandela_proof/              # Memory submission & cross-validation web app
-│   ├── memory_app.py           # Flask app for memory submission
-│   ├── memory_bank.json        # Stored memory entries
+├── mandela-proof/              # Memory submission & cross-validation web app
+│   ├── memory-bank.json        # Stored memory entries
+│   ├── memory-search.html      # Search interface
+│   ├── memory-submit.html      # Submission form
 │   ├── requirements.txt        # Python deps (Flask, Jinja2)
-│   ├── Readme.md
-│   └── templates/
-│       ├── memory_form.html    # Submission form
-│       └── memory_search.html  # Search interface
+│   ├── readme.md
+│   └── memory_bank/
+│       └── memory-app.py       # Flask app (placeholder)
 │
-└── rural_artifact_network/     # Map divergence zones by supply chain
-    ├── Readme.md
-    └── product_lifecycle_table.csv  # Product variant reference data
+└── rural-artifact-network/     # Map divergence zones by supply chain
+    ├── readme.md
+    ├── product-lifecycle-table.csv  # Product variant reference data
+    ├── heatmap-design.md        # Heatmap design doc
+    └── tagging-interface.md     # Tagging interface design doc
 ```
 
 ## Tech Stack
@@ -62,14 +64,13 @@ Logistics-Disparity-Sensor/
 
 | File | Purpose |
 |------|---------|
-| `lds_scanner.py` | Core LDS scoring algorithm — weighted calculation using geography, media exposure, era, access mode, evidence, and community validation |
-| `drift_map/drift_entry_form.py` | Flask route for submitting drift memory entries |
-| `mandela_proof/memory_app.py` | Flask web app for anonymous memory submission and search |
-| `field_manual_export/exporter_sample.py` | Generates printable artifact cards from JSON data |
+| `lds-scanner.py` | Core LDS scoring algorithm — weighted calculation using geography, media exposure, era, access mode, evidence, and community validation |
+| `drift-map/drift-entry-form.py` | CLI wizard for submitting drift memory entries |
+| `field-manual-export/exporter-sample.py` | Generates printable artifact cards from JSON data |
 
 ## LDS Scoring Algorithm
 
-The core algorithm in `lds_scanner.py` calculates a disparity score using weighted factors:
+The core algorithm in `lds-scanner.py` calculates a disparity score using weighted factors:
 
 - **Geographic weight**: rural (1.2), tribal (1.3), urban (0.9), suburban (0.8)
 - **Media sync**: no_exposure (1.5), radio_only (1.2), mainstream (0.7)
@@ -87,20 +88,13 @@ The core algorithm in `lds_scanner.py` calculates a disparity score using weight
 ### Dependencies
 
 ```bash
-pip install -r mandela_proof/requirements.txt
+pip install -r mandela-proof/requirements.txt
 ```
 
 ### Running the Core Scanner
 
 ```bash
-python lds_scanner.py
-```
-
-### Running the Web App
-
-```bash
-cd mandela_proof
-python memory_app.py
+python lds-scanner.py
 ```
 
 ### No Build Step Required
@@ -109,6 +103,7 @@ The project runs directly as Python scripts — no compilation, bundling, or bui
 
 ## Conventions
 
+- **File naming**: kebab-case for all files and directories
 - **Python style**: snake_case for variables and functions
 - **Data IDs**: `M####` for memories, `A####` for artifacts
 - **JSON schema**: entries include geographic tags (region, state, ZIP), timeline data, and community validation counts
@@ -129,6 +124,7 @@ The project runs directly as Python scripts — no compilation, bundling, or bui
 - Preserve the offline-first, community-focused design philosophy
 - Keep modules independent — avoid tight coupling between subdirectories
 - Use JSON for data interchange between modules
-- Maintain the weighted scoring approach in `lds_scanner.py`
-- Follow existing snake_case naming conventions
+- Maintain the weighted scoring approach in `lds-scanner.py`
+- Follow existing snake_case naming conventions for Python code
+- Use kebab-case for file and directory names
 - Do not introduce heavy dependencies — the project values simplicity and accessibility

@@ -6,7 +6,7 @@ def load_entries(file_path):
     with open(file_path) as f:
         return json.load(f)
 
-def render_card(entry, template_path="templates/artifact_card_template.md"):
+def render_card(entry, template_path="templates/artifact-card-templates.md"):
     with open(template_path) as f:
         tmpl = Template(f.read())
     return tmpl.render(**entry)

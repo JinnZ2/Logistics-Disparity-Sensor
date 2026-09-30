@@ -1,6 +1,8 @@
 # Logistics-Disparity-Sensor
 
-A diagnostic for separating memory drift caused by uneven distribution and access from memory error.
+> A diagnostic framework for identifying reality fragmentation caused by supply chain gaps, media desynchronization, and access inequality.
+
+Source: README.md
 
 <!-- clone-refspec-note v1.1 -->
 ## Cloning and pushing

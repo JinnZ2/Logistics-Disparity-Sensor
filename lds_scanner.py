@@ -80,9 +80,12 @@ if __name__ == "__main__":
     print("\n🛰 Logistic Disparity Sensor Result:")
     print(f"Score: {result['lds_score']}")
     print(f"Zone: {result['zone']}")
-    print(f"Message: {result['message']}\n)
+    print(f"Message: {result['message']}\n")
 
-  What It Does:
-	•	Takes inputs about where/when/how someone might’ve seen a weird version of reality
-	•	Calculates how likely that memory is due to access/supply disparity
-	•	Classifies it into a “zone” (like “Catalog/Variant” or “Relief Zone”)
+# Note 2026-11-20: the print above had no closing quote, and the lines below were bare text,
+# so this file did not compile. The text is kept as comments.
+#
+#   What It Does:
+# 	•	Takes inputs about where/when/how someone might’ve seen a weird version of reality
+# 	•	Calculates how likely that memory is due to access/supply disparity
+# 	•	Classifies it into a “zone” (like “Catalog/Variant” or “Relief Zone”)

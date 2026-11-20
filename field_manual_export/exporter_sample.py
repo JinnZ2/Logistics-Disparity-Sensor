@@ -6,7 +6,13 @@ def load_entries(file_path):
     with open(file_path) as f:
         return json.load(f)
 
-def render_card(entry, template_path="templates/artifact_card_template.md"):
+# Note 2026-11-20: the default was "templates/artifact_card_template.md". No file has that
+# name; the template is templates/artifact_card_templates.md. The default is now that file,
+# found from this module's own location.
+DEFAULT_TEMPLATE = Path(__file__).resolve().parent / "templates" / "artifact_card_templates.md"
+
+
+def render_card(entry, template_path=DEFAULT_TEMPLATE):
     with open(template_path) as f:
         tmpl = Template(f.read())
     return tmpl.render(**entry)
